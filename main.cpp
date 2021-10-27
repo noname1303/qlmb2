@@ -3,6 +3,7 @@
 #include <string>
 #include <math.h>
 #include"loginManager.h"
+#include"menu.h"
 using namespace std;
 int main()
 {
@@ -26,7 +27,7 @@ int main()
                 break;
             }
     }
-    if(isLogin){
+   /* if(isLogin){
         cout<<"Den voi phan quan ly ne";
-    }
+    }*/
 }

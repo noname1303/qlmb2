@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <math.h>
+#include "menu.h"
 #include"loginManager.h"
 using namespace std;
 
@@ -26,6 +27,8 @@ bool QuanLyDangNhap::dangNhap()
             if(userID == passwordID)
             {
                 isLogin=  true;
+                Menu menu;
+                menu.HienThiMenu();
                 cin.get();
             }
             else
