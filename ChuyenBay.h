@@ -2,14 +2,15 @@
 #include <iomanip>
 #include <fstream>
 using namespace std;
+
 class ChuyenBay
 {
 private:
     string maHieu, loaiMayBay;
     int soDay;
     int soGhe;
-    string day;
-    string time;
+    string ngay;
+    string gio;
     string noiKH, noiKT;
     ChuyenBay *nxt;
     ChuyenBay *head;

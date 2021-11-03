@@ -7,7 +7,7 @@ const int MAX_NOIKH_KT_CB = 40;
 //#include"quanLyMayBay.h"
 using namespace std;
 
-ChuyenBay::ChuyenBay(string maHieu, string loaiMayBay, int soDay, int soGhe, string day, string time, string noiKH, string noiKT) : maHieu(maHieu), loaiMayBay(loaiMayBay), soDay(soDay), soGhe(soGhe), day(day), time(time), noiKH(noiKH), noiKT(noiKT)
+ChuyenBay::ChuyenBay(string maHieu, string loaiMayBay, int soDay, int soGhe, string ngay, string gio, string noiKH, string noiKT) : maHieu(maHieu), loaiMayBay(loaiMayBay), soDay(soDay), soGhe(soGhe), ngay(ngay), gio(gio), noiKH(noiKH), noiKT(noiKT)
 {
     ChuyenBay *head = NULL;
 }
@@ -28,9 +28,9 @@ void ChuyenBay::menuCB()
 }
 void ChuyenBay::themCB()
 {
-    char noiKH[MAX_NOIKH_KT_CB], noiKT[MAX_NOIKH_KT_CB], time[MAX_NOIKH_KT_CB], tt;
-    string day;
-    int soDay, soGhe;
+    char noiKH[MAX_NOIKH_KT_CB], noiKT[MAX_NOIKH_KT_CB], gio[MAX_NOIKH_KT_CB], tt;
+    string ngay;
+    int songay, soGhe;
     while (1)
     {
         cout << "Nhap noi khoi hanh" << endl;
@@ -40,10 +40,10 @@ void ChuyenBay::themCB()
         cin.ignore();
         cin.getline(noiKT, MAX_NOIKH_KT_CB);
         cout << "Nhap ngay" << endl;
-        cin >> day;
+        cin >> ngay;
         cout << "Nhap thoi gian khoi hanh " << endl;
-        cin >> time;
-        insertCB(noiKH, noiKT, day, time);
+        cin >> gio;
+        insertCB(noiKH, noiKT, ngay, gio);
         printf("\n\n\nBan co muon tiep tuc khong (c/k) \n\n");
         tt = getch();
         if (tt == 'k' || tt == 'K')
@@ -51,7 +51,7 @@ void ChuyenBay::themCB()
     }
 }
 
-void ChuyenBay::insertCB(string noiKH, string noiKT, string day, string time)
+void ChuyenBay::insertCB(string noiKH, string noiKT, string ngay, string gio)
 {
     struct ChuyenBay *newChuyenBay = new ChuyenBay;
     fstream ChuyenBayFile;
@@ -61,12 +61,12 @@ void ChuyenBay::insertCB(string noiKH, string noiKT, string day, string time)
     {
         newChuyenBay->noiKH = noiKH;
         newChuyenBay->noiKT = noiKT;
-        newChuyenBay->day = day;
-        newChuyenBay->time = time;
+        newChuyenBay->ngay = ngay;
+        newChuyenBay->gio = gio;
         ChuyenBayFile << newChuyenBay->noiKH << "\n"
                       << newChuyenBay->noiKT << "\n"
-                      << newChuyenBay->day << "\n"
-                      << newChuyenBay->time;
+                      << newChuyenBay->ngay << "\n"
+                      << newChuyenBay->gio;
         ChuyenBayFile << "\n\n";
     }
     newChuyenBay->nxt = head;
