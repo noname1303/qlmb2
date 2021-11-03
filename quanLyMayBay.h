@@ -4,10 +4,11 @@ using namespace std;
 class quanLyMayBay
 {
 public:
-    quanLyMayBay();
-
-    void node_insertion(string, string, int, int);
+    void themMayBay();
+    void addNode(string, string, int, int);
     void show();
-    void del_Item();
-    void suaChuyenBay();
+    void xoaMayBay();
+    void suaMayBay();
+    void ghiFile();
+    void docFile();
 };

@@ -1,30 +1,67 @@
-#include "quanLyMayBay.h"
 #include <iostream>
+#include <conio.h>
+#include <string>
+#include <fstream>
+#include "quanLyMayBay.h"
 using namespace std;
-quanLyMayBay::quanLyMayBay(){};
+const int MAX_NAME_MB = 40;
+const int MAX_MA_HIEU_MB = 15;
 struct MayBay
 {
     string maHieu, loaiMayBay;
     int soDay, soGhe;
     MayBay *next;
 };
-struct listMB
-{
-    int n;
-    MayBay *nodes[MAXMB];
-};
-typedef struct listMB LISTMB;
+// struct listMB
+// {
+//     int n;
+//     MayBay *nodes[MAXMB];
+// };
+// typedef struct listMB LISTMB;
 //Declaration of Head MayBay
 struct MayBay *head = NULL;
-void quanLyMayBay::node_insertion(string maHieu, string loaiMayBay, int soDay, int soGhe)
+
+void quanLyMayBay::themMayBay()
+{
+    char maHieu[MAX_MA_HIEU_MB], loai[MAX_NAME_MB], tt;
+    int soDay, soGhe;
+    while (1)
+    {
+        cout << "Nhap ma hieu may bay" << endl;
+        cin >> maHieu;
+        cin.ignore();
+        cout << "Nhap ma loai may bay" << endl;
+        cin.getline(loai, MAX_NAME_MB);
+        cout << "Nhap so day" << endl;
+        cin >> soDay;
+        cout << "Nhap so ghe" << endl;
+        cin >> soGhe;
+        addNode(maHieu, loai, soDay, soGhe);
+        printf("\n\n\nBan co muon tiep tuc khong (c/k) \n\n");
+        tt = getch();
+        if (tt == 'k' || tt == 'K')
+            break;
+    }
+}
+
+void quanLyMayBay::addNode(string maHieu, string loaiMayBay, int soDay, int soGhe)
 {
     struct MayBay *newMayBay = new MayBay;
-    newMayBay->maHieu = maHieu;
-    newMayBay->loaiMayBay = loaiMayBay;
-    newMayBay->soDay = soDay;
-    newMayBay->soGhe = soGhe;
+    fstream MayBayFile;
+    MayBayFile.open("mayBay.txt", ios::app);
+
+    if (MayBayFile)
+    {
+        newMayBay->maHieu = maHieu;
+        newMayBay->loaiMayBay = loaiMayBay;
+        newMayBay->soDay = soDay;
+        newMayBay->soGhe = soGhe;
+        MayBayFile << newMayBay->maHieu << "\t" << newMayBay->loaiMayBay << "\t" << newMayBay->soDay << "\t" << newMayBay->soGhe;
+        MayBayFile << "0\n";
+    }
     newMayBay->next = head;
     head = newMayBay;
+    MayBayFile.close();
 }
 
 //Traversing/displaying entered nodes
@@ -46,7 +83,7 @@ void quanLyMayBay::show()
 }
 
 //Deleting node from start
-void quanLyMayBay::del_Item()
+void quanLyMayBay::xoaMayBay()
 {
     if (head == NULL)
     {
@@ -55,72 +92,3 @@ void quanLyMayBay::del_Item()
     head = head->next;
     cout << 1;
 }
-void quanLyMayBay::suaChuyenBay(LISTMB &LMB, int i, )
-{
-}
-
-// void EditMB(LISTMB &LMB, int i, NODECB LCB)
-// {
-//     //cout<<LMB.nodes[i]->SoHieuMB;
-
-//     NODECB p;
-//     p = LCB;
-//     while (p != NULL)
-//     {
-//         if (strcmp(LMB.nodes[i]->SoHieuMB, p->CB.SoHieuMB) == 0)
-//         {
-//             AlertErr(15, 4, "DA CO CHUYEN BAY DUOC TAO TREN MAY BAY NAY!");
-//             Sleep(1000);
-//             clearErr(15, 4);
-//             return;
-//         }
-//         p = p->next;
-//     }
-
-//     TextColor(Blue);
-//     gotoxy(120, 8);
-//     cout << "CHINH SUA SO HIEU MAY BAY : " << LMB.nodes[i]->SoHieuMB;
-//     gotoxy(120, 10);
-//     cout << "LOAI MAY BAY MOI : ";
-//     fflush(stdin);
-//     NhapChuoi(LMB.nodes[i]->LoaiMB, 140, 10);
-//     DelSpace(LMB.nodes[i]->LoaiMB);
-// SODAYNEW:;
-//     SetColor(Blue);
-//     gotoxy(120, 12);
-//     cout << "SO DAY MOI : ";
-//     gotoxy(140, 12);
-//     char soDaynew[2];
-//     if (inputNum(soDaynew, 1) == -1)
-//         return;
-//     if (atoi(soDaynew) > checkDay)
-//     {
-//         AlertErr(120, 4, "SO DAY KHONG DUOC HON 5!");
-//         Sleep(2000);
-//         clearErr(120, 4);
-//         gotoxy(140, 12);
-//         cout << "    ";
-//         goto SODAYNEW;
-//     }
-//     LMB.nodes[i]->soDay = atoi(soDaynew);
-// SODONGNEW:;
-//     SetColor(Blue);
-//     gotoxy(120, 14);
-//     cout << "SO DONG MOI : ";
-//     gotoxy(140, 14);
-//     char soDongnew[3];
-//     if (inputNum_noN(soDongnew) == -1)
-//         return;
-//     if (atoi(soDongnew) > checkDong)
-//     {
-//         AlertErr(120, 4, "SO DONG KHONG DUOC HON 20!");
-//         Sleep(2000);
-//         clearErr(120, 4);
-//         gotoxy(140, 14);
-//         cout << "    ";
-//         goto SODONGNEW;
-//     }
-//     LMB.nodes[i]->soDong = atoi(soDongnew);
-//     GhiFileDSMB(FileDSMB, LMB);
-//     system("cls");
-// }

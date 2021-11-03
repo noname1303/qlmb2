@@ -28,30 +28,19 @@ void Menu::XuLiMenu()
     switch (Input)
     {
     case 1:
-        cout << "dcm";
+        cout << "case1";
         break;
     case 2:
     {
         quanLyMayBay app;
-        app.show();
-        string maHieu, loai;
-        int soDay, soGhe;
-        cout << "Nhap ma hieu may bay" << endl;
-        cin >> maHieu;
-        cout << "Nhap ma loai may bay" << endl;
-        cin >> loai;
-        cout << "Nhap so day" << endl;
-        cin >> soDay;
-        cout << "Nhap so ghe" << endl;
-        cin >> soGhe;
-        app.node_insertion(maHieu, loai, soDay, soGhe);
-        app.show();
+        app.themMayBay();
+        break;
     }
     case 3:
-        cout << "dcm3";
+        cout << "case2";
         break;
     case 4:
-        cout << "dcm4";
+        cout << "case3";
         break;
     }
 }
