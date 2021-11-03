@@ -34,6 +34,7 @@ void Menu::XuLiMenu()
     {
         quanLyMayBay app;
         app.themMayBay();
+        app.docFile();
         break;
     }
     case 3:

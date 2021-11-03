@@ -3,7 +3,9 @@
 using namespace std;
 class quanLyMayBay
 {
+private:
 public:
+    void menuMayBay();
     void themMayBay();
     void addNode(string, string, int, int);
     void show();

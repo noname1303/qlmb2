@@ -21,6 +21,11 @@ struct MayBay
 //Declaration of Head MayBay
 struct MayBay *head = NULL;
 
+void quanLyMayBay::menuMayBay()
+{
+    cout << "1. Them may bay" << endl
+         << "2.Xoa may bay" << endl;
+}
 void quanLyMayBay::themMayBay()
 {
     char maHieu[MAX_MA_HIEU_MB], loai[MAX_NAME_MB], tt;
@@ -56,14 +61,23 @@ void quanLyMayBay::addNode(string maHieu, string loaiMayBay, int soDay, int soGh
         newMayBay->loaiMayBay = loaiMayBay;
         newMayBay->soDay = soDay;
         newMayBay->soGhe = soGhe;
-        MayBayFile << newMayBay->maHieu << "\t" << newMayBay->loaiMayBay << "\t" << newMayBay->soDay << "\t" << newMayBay->soGhe;
-        MayBayFile << "0\n";
+        MayBayFile << newMayBay->maHieu << "\n"
+                   << newMayBay->loaiMayBay << "\n"
+                   << newMayBay->soDay << "\n"
+                   << newMayBay->soGhe;
+        MayBayFile << "\n\n";
     }
     newMayBay->next = head;
     head = newMayBay;
     MayBayFile.close();
 }
 
+// void quanLyMayBay::docFile()
+// {
+//     fstream docFile;
+//     docFile.open("mayBay.txt", ios::out);
+//     docFile >> "mayBay.txt";
+// }
 //Traversing/displaying entered nodes
 void quanLyMayBay::show()
 {
