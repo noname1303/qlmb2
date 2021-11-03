@@ -35,7 +35,7 @@ void MayBay::menuMayBay()
         xoaMayBay();
         break;
     case 3:
-        docFile();
+        show();
         break;
     case 4:
     {
@@ -108,6 +108,7 @@ void MayBay::show()
     if (head == NULL)
     {
         return;
+        cout << "head la null";
     }
     struct MayBay *temp = head;
     while (temp != NULL)
@@ -116,6 +117,7 @@ void MayBay::show()
         cout << temp->loaiMayBay << " ";
         cout << temp->soDay * temp->soGhe << " ";
         temp = temp->next;
+        cout << "hello";
     }
     cout << endl;
 }
@@ -139,7 +141,10 @@ void MayBay::docFile()
         while (getline(docFile, line))
         {
             cout << line << '\t';
+            if (line == "")
+            {
+                cout << endl;
+            }
         }
-        cout << endl;
     }
 }
