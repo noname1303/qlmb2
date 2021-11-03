@@ -1,12 +1,13 @@
 #include "menu.h"
-#include "quanLyMayBay.h"
+#include "MayBay.h"
+#include "ChuyenBay.h"
 #include <iostream>
 using namespace std;
 Menu::Menu(){};
 void Menu::HienThiMenu()
 {
     cout << "============MayBay===========" << endl;
-    cout << "1. Them chuyen bay " << endl;
+    cout << "1. Quan ly may bay " << endl;
     cout << "2. Quan ly chuyen bay" << endl;
     cout << "3. Dat ve" << endl;
     cout << "4. Huy ve" << endl;
@@ -28,12 +29,15 @@ void Menu::XuLiMenu()
     switch (Input)
     {
     case 1:
-        cout << "case1";
+    {
+        MayBay app;
+        app.menuMayBay();
         break;
+    }
     case 2:
     {
-        quanLyMayBay app;
-        app.themMayBay();
+        ChuyenBay p;
+        p.menuCB();
         break;
     }
     case 3:

@@ -2,16 +2,16 @@
 #include <conio.h>
 #include <string>
 #include <fstream>
-#include "quanLyMayBay.h"
+#include "MayBay.h"
 using namespace std;
 const int MAX_NAME_MB = 40;
 const int MAX_MA_HIEU_MB = 15;
-struct MayBay
+
+MayBay::MayBay(string maHieu, string loaiMayBay, int soDay, int soGhe) : maHieu(maHieu), loaiMayBay(loaiMayBay), soDay(soDay), soGhe(soGhe)
 {
-    string maHieu, loaiMayBay;
-    int soDay, soGhe;
-    MayBay *next;
-};
+    MayBay *head = NULL;
+}
+
 // struct listMB
 // {
 //     int n;
@@ -19,14 +19,28 @@ struct MayBay
 // };
 // typedef struct listMB LISTMB;
 //Declaration of Head MayBay
-struct MayBay *head = NULL;
 
-void quanLyMayBay::menuMayBay()
+void MayBay::menuMayBay()
 {
+    int option;
+    cout << "====== Lua chon =====" << endl;
     cout << "1. Them may bay" << endl
          << "2.Xoa may bay" << endl;
+    cout << "===================" << endl;
+
+    cin >> option;
+    switch (option)
+    {
+    case 1:
+        themMayBay();
+        break;
+
+    default:
+        cout << "Vui long nhap dung" << endl;
+        break;
+    }
 }
-void quanLyMayBay::themMayBay()
+void MayBay::themMayBay()
 {
     char maHieu[MAX_MA_HIEU_MB], loai[MAX_NAME_MB], tt;
     int soDay, soGhe;
@@ -49,7 +63,7 @@ void quanLyMayBay::themMayBay()
     }
 }
 
-void quanLyMayBay::addNode(string maHieu, string loaiMayBay, int soDay, int soGhe)
+void MayBay::addNode(string maHieu, string loaiMayBay, int soDay, int soGhe)
 {
     struct MayBay *newMayBay = new MayBay;
     fstream MayBayFile;
@@ -72,14 +86,14 @@ void quanLyMayBay::addNode(string maHieu, string loaiMayBay, int soDay, int soGh
     MayBayFile.close();
 }
 
-// void quanLyMayBay::docFile()
+// void MayBay::docFile()
 // {
 //     fstream docFile;
 //     docFile.open("mayBay.txt", ios::out);
 //     docFile >> "mayBay.txt";
 // }
 //Traversing/displaying entered nodes
-void quanLyMayBay::show()
+void MayBay::show()
 {
     if (head == NULL)
     {
@@ -97,7 +111,7 @@ void quanLyMayBay::show()
 }
 
 //Deleting node from start
-void quanLyMayBay::xoaMayBay()
+void MayBay::xoaMayBay()
 {
     if (head == NULL)
     {

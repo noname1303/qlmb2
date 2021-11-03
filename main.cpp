@@ -4,7 +4,7 @@
 #include <string>
 #include <math.h>
 #include "loginManager.h"
-#include "quanLyMayBay.h"
+#include "MayBay.h"
 #include "menu.h"
 using namespace std;
 int main()
