@@ -20,5 +20,9 @@ public:
     void xoaMayBay();
     void suaMayBay();
     void ghiFile();
-    // void docFile();
+    void docFile();
+    string getMaHieu()
+    {
+        return maHieu;
+    }
 };

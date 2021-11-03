@@ -12,7 +12,7 @@ int main()
     QuanLyDangNhap app;
     int option;
     bool isLogin;
-
+    system("cls");
     cout << "Nhap lua chon" << endl;
     cout << "1.Dang ky" << endl;
     cout << "2.Dang nhap" << endl;

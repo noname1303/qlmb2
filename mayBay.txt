@@ -1,10 +1,14 @@
-123
-test ne
-12
+MH350
+Boeing 77
 3
+20
 
-cd
-"d:\Do-An\qlmb2\" ; if ($?) { g++ -std=
-32766
-1245510535
+MH370   
+Boeing 888
+3
+24
 
+MH360
+boeing 666
+4
+23
