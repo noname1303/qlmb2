@@ -9,7 +9,7 @@ void Menu::HienThiMenu()
     cout << "1. Them chuyen bay " << endl;
     cout << "2. Quan ly chuyen bay" << endl;
     cout << "3. Dat ve" << endl;
-    cout << "4.Huy ve" << endl;
+    cout << "4. Huy ve" << endl;
     XuLiMenu();
 }
 int Menu::NhapMenu()
@@ -34,7 +34,6 @@ void Menu::XuLiMenu()
     {
         quanLyMayBay app;
         app.themMayBay();
-        app.docFile();
         break;
     }
     case 3:
